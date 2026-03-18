@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background-light text-text-primary-light dark:bg-background-dark dark:text-text-primary-dark;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/70 dark:bg-surface-dark/70 backdrop-blur-xl border border-white/20 dark:border-white/10;
+  }
+
+  .gradient-primary {
+    @apply bg-gradient-to-br from-primary to-primary-dark;
+  }
+
+  .gradient-hero {
+    background: linear-gradient(135deg, #037E8C 0%, #025669 50%, #121212 100%);
+  }
+
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 py-20 lg:py-28;
+  }
+
+  .container-main {
+    @apply max-w-7xl mx-auto;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Phone mockup glow */
+.phone-glow {
+  box-shadow: 0 0 80px rgba(3, 126, 140, 0.3), 0 0 160px rgba(3, 126, 140, 0.1);
+}
+
+/* Animated gradient background */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+/* Floating shapes */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 8s ease-in-out 2s infinite;
+}
+
+.animate-float-slow {
+  animation: float 10s ease-in-out 4s infinite;
+}
