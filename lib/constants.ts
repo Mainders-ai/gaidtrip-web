@@ -45,7 +45,7 @@ export const STEPS = [
   {
     number: "02",
     title: "La IA crea tu itinerario",
-    description: "Gemini genera un plan día a día personalizado",
+    description: "GAID genera un plan día a día personalizado",
   },
   {
     number: "03",
@@ -150,7 +150,7 @@ export const FAQS = [
   {
     question: "¿Cómo funciona la IA para crear itinerarios?",
     answer:
-      "Usamos Gemini de Google para analizar tus preferencias, presupuesto, fechas y destinos. La IA genera un itinerario día a día con actividades, restaurantes, tips y tiempos de traslado optimizados para ti.",
+      "Nuestra IA analiza tus preferencias, presupuesto, fechas y destinos. GAID genera un itinerario día a día con actividades, restaurantes, tips y tiempos de traslado optimizados para ti.",
   },
   {
     question: "¿Puedo modificar mi itinerario después de crearlo?",
@@ -175,6 +175,6 @@ export const FAQS = [
   {
     question: "¿Mis datos están seguros?",
     answer:
-      "Tu privacidad es nuestra prioridad. Los chats están cifrados con AES-256, usamos Firebase con reglas de seguridad estrictas, y nunca compartimos tu información personal con terceros.",
+      "Tu privacidad es nuestra prioridad. Los chats están cifrados de extremo a extremo, usamos infraestructura segura con reglas de seguridad estrictas, y nunca compartimos tu información personal con terceros.",
   },
 ];
