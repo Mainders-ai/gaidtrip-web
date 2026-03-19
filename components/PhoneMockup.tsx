@@ -1,18 +1,65 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { MapPin, Sparkles, Calendar, MessageCircle } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { MapPin, Sparkles, Calendar, MessageCircle, Bell, Star } from "lucide-react";
+import { useState, useEffect } from "react";
+
+const notifications = [
+  { icon: Bell, text: "Tu vuelo a Roma sale en 3h", color: "bg-accent" },
+  { icon: Star, text: "Nuevo: Coliseo con 4.9★", color: "bg-primary" },
+  { icon: MapPin, text: "Restaurante cercano recomendado", color: "bg-success" },
+];
 
 export default function PhoneMockup() {
+  const [notifIndex, setNotifIndex] = useState(0);
+  const [showNotif, setShowNotif] = useState(false);
+
+  useEffect(() => {
+    const showTimer = setTimeout(() => setShowNotif(true), 2500);
+    const interval = setInterval(() => {
+      setShowNotif(false);
+      setTimeout(() => {
+        setNotifIndex((prev) => (prev + 1) % notifications.length);
+        setShowNotif(true);
+      }, 500);
+    }, 4000);
+    return () => {
+      clearTimeout(showTimer);
+      clearInterval(interval);
+    };
+  }, []);
+
+  const currentNotif = notifications[notifIndex];
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.3 }}
-      className="relative mx-auto w-[280px] sm:w-[300px]"
+      className="relative mx-auto w-[280px] sm:w-[300px] animate-phone-float"
     >
-      {/* Glow */}
-      <div className="absolute inset-0 phone-glow rounded-[3rem]" />
+      {/* Pulsating glow */}
+      <div className="absolute inset-0 phone-glow-pulse rounded-[3rem]" />
+
+      {/* Floating notification */}
+      <AnimatePresence>
+        {showNotif && (
+          <motion.div
+            initial={{ opacity: 0, x: 40, scale: 0.8 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            exit={{ opacity: 0, x: -20, scale: 0.9 }}
+            transition={{ type: "spring", stiffness: 300, damping: 25 }}
+            className="absolute -right-4 sm:-right-16 top-20 z-20 flex items-center gap-2 px-3 py-2 rounded-xl bg-white dark:bg-surface-dark shadow-lg border border-gray-100 dark:border-white/10 max-w-[180px]"
+          >
+            <div className={`w-7 h-7 rounded-lg ${currentNotif.color} flex items-center justify-center shrink-0`}>
+              <currentNotif.icon className="w-3.5 h-3.5 text-white" />
+            </div>
+            <p className="text-[10px] font-medium text-text-primary-light dark:text-text-primary-dark leading-tight">
+              {currentNotif.text}
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Phone frame */}
       <div className="relative bg-gray-900 rounded-[3rem] p-3 shadow-2xl border border-white/10">

@@ -34,16 +34,28 @@ export default function Pricing() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className={`relative rounded-2xl p-6 lg:p-8 ${
+              whileHover={{ y: -6, transition: { duration: 0.25 } }}
+              className={`relative rounded-2xl p-6 lg:p-8 cursor-pointer transition-shadow duration-300 hover:shadow-xl ${
                 plan.highlighted
-                  ? "gradient-primary text-white shadow-xl shadow-primary/20 scale-[1.03] border-0"
-                  : "bg-background-light dark:bg-background-dark border border-gray-100 dark:border-white/5"
+                  ? "gradient-primary text-white shadow-xl shadow-primary/20 scale-[1.03] border-0 shimmer-effect"
+                  : "bg-background-light dark:bg-background-dark border border-gray-100 dark:border-white/5 hover:shadow-primary/10"
               }`}
             >
               {plan.highlighted && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-accent text-white text-xs font-bold">
+                <motion.span
+                  initial={{ scale: 0, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 400,
+                    damping: 12,
+                    delay: 0.4,
+                  }}
+                  className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-accent text-white text-xs font-bold"
+                >
                   Popular
-                </span>
+                </motion.span>
               )}
 
               <h3

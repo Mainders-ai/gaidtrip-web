@@ -48,7 +48,7 @@ export default function Hero() {
               className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight text-balance"
             >
               Tu próximo viaje,{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-accent-light">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-light via-accent-light to-primary-light animate-gradient-text">
                 planeado por IA
               </span>
             </motion.h1>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS } from "@/lib/constants";
 import ThemeToggle from "./ThemeToggle";
@@ -25,33 +26,47 @@ export default function Navbar() {
     >
       <div className="container-main flex items-center justify-between h-16 lg:h-20 px-4 sm:px-6 lg:px-8">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2 font-bold text-xl tracking-tight">
+        <motion.a
+          href="#"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+          className="flex items-center gap-2 font-bold text-xl tracking-tight"
+        >
           <span className="text-primary">Gaid</span>
           <span className="text-text-primary-light dark:text-text-primary-dark">Trip</span>
-        </a>
+        </motion.a>
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-8">
-          {NAV_LINKS.map((link) => (
-            <a
+          {NAV_LINKS.map((link, i) => (
+            <motion.a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark hover:text-primary dark:hover:text-primary-light transition-colors"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.1 + i * 0.05 }}
+              className="nav-link-underline text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark hover:text-primary dark:hover:text-primary-light transition-colors"
             >
               {link.label}
-            </a>
+            </motion.a>
           ))}
         </div>
 
         {/* Right side */}
         <div className="flex items-center gap-3">
           <ThemeToggle />
-          <a
+          <motion.a
             href="#hero"
-            className="hidden md:inline-flex items-center px-5 py-2.5 rounded-xl text-sm font-semibold text-white gradient-primary hover:opacity-90 transition-opacity"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.4, delay: 0.3 }}
+            whileHover={{ y: -2, boxShadow: "0 8px 20px rgba(3, 126, 140, 0.3)" }}
+            whileTap={{ scale: 0.97 }}
+            className="hidden md:inline-flex items-center px-5 py-2.5 rounded-xl text-sm font-semibold text-white gradient-primary transition-opacity"
           >
             Descargar App
-          </a>
+          </motion.a>
           {/* Mobile hamburger */}
           <button
             className="md:hidden p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-white/10 transition-colors"
@@ -64,29 +79,43 @@ export default function Navbar() {
       </div>
 
       {/* Mobile menu */}
-      {mobileOpen && (
-        <div className="md:hidden glass border-t border-white/10">
-          <div className="px-4 py-4 space-y-3">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="md:hidden glass border-t border-white/10 overflow-hidden"
+          >
+            <div className="px-4 py-4 space-y-3">
+              {NAV_LINKS.map((link, i) => (
+                <motion.a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.05 }}
+                  className="block py-2 text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark hover:text-primary transition-colors"
+                >
+                  {link.label}
+                </motion.a>
+              ))}
+              <motion.a
+                href="#hero"
                 onClick={() => setMobileOpen(false)}
-                className="block py-2 text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark hover:text-primary transition-colors"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="block text-center px-5 py-2.5 rounded-xl text-sm font-semibold text-white gradient-primary"
               >
-                {link.label}
-              </a>
-            ))}
-            <a
-              href="#hero"
-              onClick={() => setMobileOpen(false)}
-              className="block text-center px-5 py-2.5 rounded-xl text-sm font-semibold text-white gradient-primary"
-            >
-              Descargar App
-            </a>
-          </div>
-        </div>
-      )}
+                Descargar App
+              </motion.a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

@@ -1,12 +1,16 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { MapPin, Sparkles, PartyPopper } from "lucide-react";
 import { STEPS } from "@/lib/constants";
+import { useRef } from "react";
 
 const stepIcons = [MapPin, Sparkles, PartyPopper];
 
 export default function HowItWorks() {
+  const timelineRef = useRef(null);
+  const isInView = useInView(timelineRef, { once: true, margin: "-100px" });
+
   return (
     <section
       id="como-funciona"
@@ -28,9 +32,15 @@ export default function HowItWorks() {
           </h2>
         </motion.div>
 
-        <div className="relative max-w-3xl mx-auto">
-          {/* Vertical line */}
-          <div className="absolute left-6 lg:left-1/2 lg:-translate-x-px top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary-light to-accent hidden sm:block" />
+        <div className="relative max-w-3xl mx-auto" ref={timelineRef}>
+          {/* Animated vertical line */}
+          <motion.div
+            initial={{ scaleY: 0 }}
+            animate={isInView ? { scaleY: 1 } : { scaleY: 0 }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
+            style={{ transformOrigin: "top" }}
+            className="absolute left-6 lg:left-1/2 lg:-translate-x-px top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary-light to-accent hidden sm:block"
+          />
 
           <div className="space-y-12 sm:space-y-16">
             {STEPS.map((step, i) => {
@@ -47,16 +57,33 @@ export default function HowItWorks() {
                     isRight ? "lg:flex-row-reverse lg:text-right" : ""
                   }`}
                 >
-                  {/* Icon node */}
-                  <div className="relative z-10 shrink-0 w-12 h-12 rounded-full gradient-primary flex items-center justify-center shadow-lg shadow-primary/20">
+                  {/* Icon node with pulse */}
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 15,
+                      delay: 0.3 + i * 0.2,
+                    }}
+                    className="relative z-10 shrink-0 w-12 h-12 rounded-full gradient-primary flex items-center justify-center shadow-lg shadow-primary/20 animate-node-pulse"
+                  >
                     <Icon className="w-5 h-5 text-white" />
-                  </div>
+                  </motion.div>
 
                   {/* Content */}
                   <div className="flex-1">
-                    <span className="text-xs font-bold text-primary uppercase tracking-widest">
+                    <motion.span
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.4 + i * 0.2 }}
+                      className="text-xs font-bold text-primary uppercase tracking-widest"
+                    >
                       Paso {step.number}
-                    </span>
+                    </motion.span>
                     <h3 className="mt-1 text-xl font-bold text-text-primary-light dark:text-text-primary-dark">
                       {step.title}
                     </h3>
