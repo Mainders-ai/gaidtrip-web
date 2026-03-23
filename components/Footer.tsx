@@ -61,9 +61,18 @@ export default function Footer() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-8 pt-8 border-t border-gray-200 dark:border-white/10 text-center text-sm text-text-secondary-light dark:text-text-secondary-dark"
+          className="mt-8 pt-8 border-t border-gray-200 dark:border-white/10 flex items-center justify-center text-sm text-text-secondary-light dark:text-text-secondary-dark"
         >
-          &copy; {new Date().getFullYear()} Gaid Trip. Todos los derechos reservados.
+          <span>&copy; {new Date().getFullYear()} Gaid Trip. Todos los derechos reservados.</span>
+          <a
+            href="/admin/login"
+            className="ml-3 opacity-30 hover:opacity-100 transition-opacity"
+            title="Admin"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
+              <path fillRule="evenodd" d="M10 1a4.5 4.5 0 0 0-4.5 4.5V9H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-.5V5.5A4.5 4.5 0 0 0 10 1Zm3 8V5.5a3 3 0 1 0-6 0V9h6Z" clipRule="evenodd" />
+            </svg>
+          </a>
         </motion.div>
       </div>
     </footer>
