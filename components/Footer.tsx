@@ -17,8 +17,8 @@ export default function Footer() {
           {/* Logo + tagline */}
           <div className="text-center md:text-left">
             <a href="#" className="font-bold text-xl tracking-tight">
-              <span className="text-primary-light">Gaid</span>
-              <span className="text-text-primary-light dark:text-text-primary-dark"> Trip</span>
+              <span className="text-white/70">Gaid</span>
+              <span className="text-white font-extrabold"> Trip</span>
             </a>
             <p className="mt-1 text-sm text-text-secondary-light dark:text-text-secondary-dark">
               {SITE.tagline}

@@ -33,8 +33,8 @@ export default function Navbar() {
           transition={{ duration: 0.5 }}
           className="flex items-center gap-2 font-bold text-xl tracking-tight"
         >
-          <span className="text-primary-light">Gaid</span>
-          <span className="text-text-primary-light dark:text-text-primary-dark">Trip</span>
+          <span className="text-white/70">Gaid</span>
+          <span className="text-white font-extrabold">Trip</span>
         </motion.a>
 
         {/* Desktop links */}
