@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 import { NAV_LINKS } from "@/lib/constants";
 import ThemeToggle from "./ThemeToggle";
 
@@ -33,6 +34,7 @@ export default function Navbar() {
           transition={{ duration: 0.5 }}
           className="flex items-center gap-2 font-bold text-xl tracking-tight"
         >
+          <Image src="/logo.png" alt="Gaidtrip" width={32} height={32} className="w-8 h-8" />
           <span className={scrolled ? "text-primary-light" : "text-white/70"}>Gaid</span>
           <span className={scrolled ? "text-text-primary-light dark:text-text-primary-dark font-extrabold" : "text-white font-extrabold"}>Trip</span>
         </motion.a>
