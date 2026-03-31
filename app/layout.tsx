@@ -37,6 +37,10 @@ export const metadata: Metadata = {
     description:
       "Itinerarios personalizados con IA, compañeros de viaje, experiencias únicas.",
   },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
   robots: {
     index: true,
     follow: true,
