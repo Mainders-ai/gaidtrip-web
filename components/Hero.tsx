@@ -59,8 +59,8 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="mt-6 text-lg text-white/70 max-w-lg mx-auto lg:mx-0 text-balance"
             >
-              Itinerarios personalizados, compañeros de viaje, experiencias
-              únicas. Todo en una app.
+              Itinerarios personalizados con IA, guía en tiempo real durante
+              tu viaje, compañeros de viaje. Todo en una app.
             </motion.p>
 
             {/* App store badges */}

@@ -1,14 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Sparkles, Users, Ticket, Shield } from "lucide-react";
+import { Sparkles, Users, Navigation, CalendarDays, Globe, UserPlus } from "lucide-react";
 import { FEATURES } from "@/lib/constants";
 
 const iconMap = {
   Sparkles,
   Users,
-  Ticket,
-  Shield,
+  Navigation,
+  CalendarDays,
+  Globe,
+  UserPlus,
 } as const;
 
 export default function Features() {
@@ -33,7 +35,7 @@ export default function Features() {
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {FEATURES.map((feature, i) => {
             const Icon = iconMap[feature.icon];
             return (
@@ -41,20 +43,20 @@ export default function Features() {
                 key={feature.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
+                viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                whileHover={{ y: -8, transition: { duration: 0.25 } }}
-                className="group relative p-6 rounded-2xl bg-surface-light dark:bg-surface-dark border border-gray-100 dark:border-white/5 hover:border-primary/30 dark:hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 cursor-pointer"
               >
-                <div className="w-12 h-12 rounded-xl gradient-primary flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
-                  <Icon className="w-6 h-6 text-white" />
+                <div className="group relative p-6 rounded-2xl bg-surface-light dark:bg-surface-dark border border-gray-100 dark:border-white/5 hover:border-primary/30 dark:hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 cursor-pointer hover:-translate-y-2">
+                  <div className="w-12 h-12 rounded-xl gradient-primary flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+                    <Icon className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-text-primary-light dark:text-text-primary-dark">
+                    {feature.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-text-secondary-light dark:text-text-secondary-dark leading-relaxed">
+                    {feature.description}
+                  </p>
                 </div>
-                <h3 className="text-lg font-semibold text-text-primary-light dark:text-text-primary-dark">
-                  {feature.title}
-                </h3>
-                <p className="mt-2 text-sm text-text-secondary-light dark:text-text-secondary-dark leading-relaxed">
-                  {feature.description}
-                </p>
               </motion.div>
             );
           })}

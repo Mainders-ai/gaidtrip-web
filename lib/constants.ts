@@ -2,7 +2,7 @@ export const SITE = {
   name: "Gaid Trip",
   tagline: "Tu guía de viajes con IA",
   description:
-    "Itinerarios personalizados con IA, compañeros de viaje, experiencias únicas. Planifica tu próximo viaje con Gaid Trip.",
+    "Itinerarios personalizados con IA, guía en tiempo real durante tu viaje y compañeros de viaje. Planifica tu próximo viaje con Gaid Trip.",
   url: "https://gaidtrip.com",
 };
 
@@ -15,24 +15,34 @@ export const NAV_LINKS = [
 
 export const FEATURES = [
   {
-    title: "Planifica con IA",
-    description: "Itinerarios personalizados según tus gustos y presupuesto",
+    title: "Itinerarios con IA",
+    description: "Itinerarios multi-destino personalizados. Modifícalos con chat IA: \"agrega un día de playa\" y listo.",
     icon: "Sparkles" as const,
   },
   {
-    title: "Conecta con viajeros",
-    description: "Encuentra compañeros de viaje con intereses similares",
+    title: "Planes del día",
+    description: "¿Solo un día libre? GAID crea un plan social optimizado para cualquier ciudad con actividades, comida y tips.",
+    icon: "CalendarDays" as const,
+  },
+  {
+    title: "Modo Viaje en Vivo",
+    description: "Tu itinerario se convierte en guía en tiempo real: clima, navegación, notificaciones y actividades completadas.",
+    icon: "Navigation" as const,
+  },
+  {
+    title: "Conecta viajeros",
+    description: "Matching inteligente con viajeros afines. Chat cifrado de extremo a extremo para conocerse.",
     icon: "Users" as const,
   },
   {
-    title: "Reserva experiencias",
-    description: "Tours y actividades exclusivas con un solo tap",
-    icon: "Ticket" as const,
+    title: "32 idiomas",
+    description: "Usa GAID en tu idioma. Disponible en 32 idiomas para viajeros de todo el mundo.",
+    icon: "Globe" as const,
   },
   {
-    title: "Viaja seguro",
-    description: "Monitoreo en tiempo real y contactos de emergencia",
-    icon: "Shield" as const,
+    title: "Colaboración en vivo",
+    description: "Edita itinerarios con amigos en tiempo real. Ve quién está editando y los cambios al instante.",
+    icon: "UserPlus" as const,
   },
 ];
 
@@ -40,17 +50,17 @@ export const STEPS = [
   {
     number: "01",
     title: "Cuéntanos tu viaje",
-    description: "Elige destino, fechas, presupuesto e intereses",
+    description: "Elige destino, fechas, presupuesto e intereses. O crea un plan rápido de un día.",
   },
   {
     number: "02",
-    title: "La IA crea tu itinerario",
-    description: "GAID genera un plan día a día personalizado",
+    title: "La IA crea tu plan",
+    description: "GAID genera un itinerario completo o un plan del día con actividades, comida y tips.",
   },
   {
     number: "03",
-    title: "Disfruta y reserva",
-    description: "Modifica con chat IA, reserva tours y encuentra compañeros",
+    title: "Viaja con GAID",
+    description: "El modo en vivo te guía con notificaciones, clima y sugerencias con IA",
   },
 ];
 
@@ -102,9 +112,10 @@ export const PRICING = [
     name: "Gratis",
     price: "$0",
     period: "",
-    description: "Perfecto para probar",
+    description: "Para explorar sin compromiso",
     features: [
       "1 itinerario con IA",
+      "1 plan del día",
       "Hasta 3 días de viaje",
       "Mapa interactivo",
       "Con publicidad",
@@ -113,36 +124,23 @@ export const PRICING = [
     cta: "Comenzar gratis",
   },
   {
-    name: "Por Viaje",
-    price: "$29",
-    period: "MXN / viaje",
-    description: "Todo lo que necesitas para un viaje",
-    features: [
-      "Itinerario completo con IA",
-      "Viajes de hasta 30 días",
-      "Multi-destino (5 ciudades)",
-      "Chat IA ilimitado",
-      "Sin publicidad",
-      "Colaboración en tiempo real",
-    ],
-    highlighted: false,
-    cta: "Elegir plan",
-  },
-  {
     name: "Premium",
     price: "$79",
     period: "MXN / mes",
-    description: "Para viajeros frecuentes",
+    description: "Todo ilimitado, 7 días gratis",
     features: [
       "Itinerarios ilimitados",
-      "Todas las features de Por Viaje",
+      "Planes del día ilimitados",
+      "Viajes de hasta 30 días",
+      "Multi-destino (5 ciudades)",
+      "Modo Viaje en Vivo",
+      "Chat IA ilimitado",
       "Matching de viajeros",
-      "Stories y postales",
+      "Colaboración en tiempo real",
       "Sin publicidad",
-      "Nuevas features primero",
     ],
     highlighted: true,
-    cta: "Suscribirme",
+    cta: "Probar 7 días gratis",
   },
 ];
 
@@ -150,12 +148,17 @@ export const FAQS = [
   {
     question: "¿Cómo funciona la IA para crear itinerarios?",
     answer:
-      "Nuestra IA analiza tus preferencias, presupuesto, fechas y destinos. GAID genera un itinerario día a día con actividades, restaurantes, tips y tiempos de traslado optimizados para ti.",
+      "Nuestra IA analiza tus preferencias, presupuesto, fechas y destinos. GAID genera un itinerario día a día con actividades, restaurantes, tips y tiempos de traslado optimizados para ti. También puedes crear planes rápidos de un solo día para cualquier ciudad.",
   },
   {
     question: "¿Puedo modificar mi itinerario después de crearlo?",
     answer:
       "¡Por supuesto! Tienes un chat con IA integrado donde puedes pedir cambios como \"agrega un día de playa\" o \"cambia el restaurante del día 3\". También puedes editar manualmente cualquier actividad.",
+  },
+  {
+    question: "¿Qué es el Modo Viaje en Vivo?",
+    answer:
+      "Cuando llega la fecha de tu viaje, tu itinerario se convierte en un asistente personal en tiempo real. Recibes notificaciones antes de cada actividad, ves el clima actualizado, el tiempo de traslado entre lugares, sugerencias con IA según tu ubicación y puedes marcar actividades como completadas. Es como tener un guía de viajes en tu bolsillo.",
   },
   {
     question: "¿En qué ciudades está disponible?",
@@ -165,7 +168,7 @@ export const FAQS = [
   {
     question: "¿Es gratis? ¿Qué incluye cada plan?",
     answer:
-      "Sí, puedes crear tu primer itinerario completamente gratis. El plan Por Viaje desbloquea multi-destino y chat ilimitado. Premium te da itinerarios ilimitados y matching con otros viajeros.",
+      "Sí, puedes crear tu primer itinerario completamente gratis. Si quieres más, Premium desbloquea itinerarios ilimitados, multi-destino, Modo Viaje en Vivo, chat IA ilimitado, matching de viajeros, stories y más. Puedes probarlo 7 días gratis antes de pagar $79 MXN/mes.",
   },
   {
     question: "¿Cómo funciona el matching de viajeros?",

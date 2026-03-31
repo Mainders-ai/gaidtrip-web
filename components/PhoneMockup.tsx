@@ -5,9 +5,9 @@ import { MapPin, Sparkles, Calendar, MessageCircle, Bell, Star } from "lucide-re
 import { useState, useEffect } from "react";
 
 const notifications = [
-  { icon: Bell, text: "Tu vuelo a Roma sale en 3h", color: "bg-accent" },
-  { icon: Star, text: "Nuevo: Coliseo con 4.9★", color: "bg-primary" },
-  { icon: MapPin, text: "Restaurante cercano recomendado", color: "bg-success" },
+  { icon: Bell, text: "Coliseo en 30 min. Lleva agua!", color: "bg-accent" },
+  { icon: Star, text: "15 min caminando al Vaticano", color: "bg-primary" },
+  { icon: MapPin, text: "Lluvia a las 15:00. Hay alternativa", color: "bg-success" },
 ];
 
 export default function PhoneMockup() {
