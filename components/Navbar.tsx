@@ -31,11 +31,11 @@ export default function Navbar() {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
-          className="flex items-center gap-1 font-bold text-xl tracking-tight"
+          className="flex items-center gap-1.5 font-bold text-xl tracking-tight"
         >
           <img src="/logo.png" alt="Gaidtrip" className="w-8 h-8 object-contain" />
           <span className={scrolled ? "text-primary-light" : "text-white/70"}>Gaid</span>
-          <span className={`-ml-1 ${scrolled ? "text-text-primary-light dark:text-text-primary-dark font-extrabold" : "text-white font-extrabold"}`}>Trip</span>
+          <span className={scrolled ? "text-text-primary-light dark:text-text-primary-dark font-extrabold" : "text-white font-extrabold"}>Trip</span>
         </motion.a>
 
         {/* Desktop links */}
